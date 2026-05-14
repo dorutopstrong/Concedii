@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerere Concediu - Top Strong SRL</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f0f0f8;font-family:Arial,sans-serif;padding:1rem}
+.wrap{max-width:560px;margin:1.5rem auto;padding:0 0 2rem}
+.header{background:#534AB7;border-radius:12px 12px 0 0;padding:1.25rem 1.5rem}
+.header h1{color:#fff;font-size:20px;font-weight:500}
+.header p{color:#CECBF6;font-size:13px;margin-top:4px}
+.card{background:#fff;border:1px solid #e0e0e0;padding:1.25rem 1.5rem;margin-top:10px;border-radius:12px}
+label.lbl{display:block;font-size:13px;color:#666;margin-bottom:6px}
+label.lbl span{color:#E24B4A;margin-left:2px}
+label.lbl em{font-style:normal;font-size:12px;color:#888;margin-left:4px}
+input[type=text],input[type=date],input[type=email],select{width:100%;padding:8px 10px;border:1px solid #ccc;border-radius:8px;font-size:14px;color:#111;background:#fff}
+input:focus,select:focus{outline:none;border-color:#534AB7}
+.cb-group{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.cb-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:8px;cursor:pointer}
+.cb-item:hover{background:#f5f5f5}
+.cb-item.invoire-item{border-color:#AFA9EC;background:#EEEDFE}
+.cb-item input{width:16px;height:16px;accent-color:#534AB7;cursor:pointer;flex-shrink:0}
+.cb-item label{font-size:14px;color:#111;cursor:pointer}
+.cb-item.invoire-item label{color:#3C3489;font-weight:500}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.result-box{background:#EEEDFE;border-radius:12px;padding:1.25rem 1.5rem;margin-top:10px;display:none;align-items:center;gap:1rem}
+.result-num{font-size:36px;font-weight:500;color:#3C3489;min-width:56px;text-align:center}
+.result-detail{font-size:12px;color:#7F77DD;margin-top:2px}
+.result-label{font-size:13px;color:#534AB7}
+.ore-card{background:#fff;border:2px solid #534AB7;padding:1.25rem 1.5rem;margin-top:10px;border-radius:12px;display:none}
+.ore-info{background:#EEEDFE;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:13px;color:#3C3489;display:none}
+.email-note{background:#EEEDFE;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:12px;color:#534AB7}
+.submit-btn{width:100%;margin-top:12px;padding:11px;background:#534AB7;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer}
+.submit-btn:hover{background:#3C3489}
+.submit-btn:disabled{background:#AFA9EC;cursor:not-allowed}
+.warn{color:#854F0B;font-size:12px;margin-top:4px;display:none}
+.err-box{background:#FCEBEB;border-radius:12px;padding:1rem 1.25rem;margin-top:10px;font-size:14px;color:#791F1F;display:none}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.print-section{display:none;margin-top:16px}
+.print-actions{display:flex;gap:8px;margin-bottom:10px}
+.btn-print{flex:1;padding:10px;background:#534AB7;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer}
+.btn-print:hover{background:#3C3489}
+.btn-new{flex:1;padding:10px;background:#f0f0f0;color:#111;border:1px solid #ccc;border-radius:8px;font-size:14px;cursor:pointer}
+#doc{padding:32px 40px;font-family:Georgia,serif;color:#111;font-size:13px;line-height:1.6;background:#fff;border:1px solid #ccc;border-radius:12px}
+#doc .doc-title{text-align:center;font-size:17px;font-weight:bold;margin-bottom:4px;letter-spacing:1px}
+#doc .doc-subtitle{text-align:center;font-size:12px;color:#555;margin-bottom:28px}
+#doc .doc-body p{margin-bottom:10px;text-align:justify}
+#doc .doc-body strong{text-decoration:underline}
+#doc .doc-tip{margin:16px 0;padding:10px 16px;border:1px solid #111}
+#doc .doc-tip table{width:100%;border-collapse:collapse}
+#doc .doc-tip td{padding:4px 8px;font-size:12px}
+#doc .doc-tip td:first-child{font-weight:bold;width:160px}
+#doc .doc-signatures{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+#doc .sig-box{border-top:1px solid #111;padding-top:8px;font-size:12px;text-align:center}
+#doc .sig-label{font-weight:bold;margin-bottom:24px}
+#doc .doc-footer{margin-top:28px;font-size:11px;color:#777;text-align:center;border-top:1px solid #ddd;padding-top:8px}
+#doc .nr-inreg{margin-bottom:20px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap" id="form-section">
+  <div class="header">
+    <h1>Cerere concediu / învoire</h1>
+    <p>SC TOP STRONG SRL</p>
+  </div>
+  <div class="card">
+    <label class="lbl" for="nume">Subsemnatul<span>*</span></label>
+    <input type="text" id="nume" placeholder="Numele și prenumele complet">
+  </div>
+  <div class="card">
+    <label class="lbl" for="functie">Funcția / postul</label>
+    <input type="text" id="functie" placeholder="ex: Șofer, Agent vânzări...">
+  </div>
+  <div class="card">
+    <label class="lbl" for="email">Adresa de email <em>(opțional)</em></label>
+    <input type="email" id="email" placeholder="exemplu@gmail.com">
+    <div class="email-note">Dacă completezi emailul, vei primi confirmare la trimitere și la aprobare.</div>
+  </div>
+  <div class="card">
+    <label class="lbl">Angajat al SC TOP STRONG SRL, vă rog să-mi aprobați:<span>*</span></label>
+    <div class="cb-group">
+      <div class="cb-item"><input type="checkbox" id="c1" name="tip_opt" value="Concediu de odihnă"><label for="c1">Concediu de odihnă</label></div>
+      <div class="cb-item"><input type="checkbox" id="c2" name="tip_opt" value="Concediu fără plată"><label for="c2">Concediu fără plată</label></div>
+      <div class="cb-item"><input type="checkbox" id="c3" name="tip_opt" value="Concediu medical"><label for="c3">Concediu medical</label></div>
+      <div class="cb-item"><input type="checkbox" id="c4" name="tip_opt" value="Concediu ev. speciale"><label for="c4">Concediu ev. speciale</label></div>
+      <div class="cb-item invoire-item"><input type="checkbox" id="c5" name="tip_opt" value="Învoire"><label for="c5">Învoire</label></div>
+    </div>
+  </div>
+  <div class="card" id="date-concediu">
+    <div class="row2">
+      <div>
+        <label class="lbl" for="dstart">Începând cu data de<span>*</span></label>
+        <input type="date" id="dstart">
+      </div>
+      <div>
+        <label class="lbl" for="dend">Până la data de<span>*</span></label>
+        <input type="date" id="dend">
+      </div>
+    </div>
+    <div id="warn-date" class="warn">Data de sfârșit trebuie să fie după data de început.</div>
+  </div>
+  <div class="card" id="date-invoire" style="display:none">
+    <label class="lbl" for="dstart-inv">Data învoirii<span>*</span></label>
+    <input type="date" id="dstart-inv">
+  </div>
+  <div id="result-box" class="result-box">
+    <div class="result-num" id="rnum">0</div>
+    <div>
+      <div class="result-label" id="rlabel">zile lucrătoare</div>
+      <div class="result-detail" id="rdetail"></div>
+    </div>
+  </div>
+  <div class="ore-card" id="ore-card">
+    <label class="lbl" for="ore" style="color:#3C3489;font-weight:500">Număr de ore solicitate<span>*</span></label>
+    <select id="ore">
+      <option value="">— selectează orele —</option>
+      <option value="1">1 oră</option>
+      <option value="2">2 ore</option>
+      <option value="3">3 ore</option>
+      <option value="4">4 ore</option>
+      <option value="5">5 ore</option>
+      <option value="6">6 ore</option>
+      <option value="7">7 ore</option>
+      <option value="8">8 ore</option>
+    </select>
+    <div class="ore-info" id="ore-info"></div>
+  </div>
+  <div class="card">
+    <label class="lbl" for="semn">Semnătura (numele complet)<span>*</span></label>
+    <input type="text" id="semn" placeholder="Confirmați cu numele dvs.">
+  </div>
+  <div class="err-box" id="err-box"></div>
+  <button class="submit-btn" id="btn-submit" onclick="submitForm()">Trimite cererea</button>
+</div>
+
+<div class="print-section" id="print-section">
+  <div class="print-actions">
+    <button class="btn-print" onclick="printDoc()">🖨️ Printează / Salvează PDF</button>
+    <button class="btn-new" onclick="resetForm()">↩ Cerere nouă</button>
+  </div>
+  <div id="doc"></div>
+</div>
+
+<script>
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2vOnElM-z9SxvwyJxtJvN2EzeXiQfb4aWlLnxaqtKSJARpfx95xko8bTioxq30P8OnQ/exec";
+
+function isInvoire(){ return document.getElementById('c5').checked; }
+
+function updateUI(){
+  var inv=isInvoire();
+  document.getElementById('date-concediu').style.display=inv?'none':'block';
+  document.getElementById('date-invoire').style.display=inv?'block':'none';
+  document.getElementById('ore-card').style.display=inv?'block':'none';
+  document.getElementById('result-box').style.display='none';
+  if(!inv){document.getElementById('ore').value='';document.getElementById('ore-info').style.display='none';calc();}
+  document.querySelectorAll('input[name=tip_opt]:not(#c5)').forEach(function(cb){cb.disabled=inv;if(inv)cb.checked=false;});
+  var anyOther=Array.from(document.querySelectorAll('input[name=tip_opt]:not(#c5):checked')).length>0;
+  document.getElementById('c5').disabled=anyOther;
+}
+
+function workdays(d1,d2){
+  var count=0,cur=new Date(d1),end=new Date(d2);
+  cur.setHours(0,0,0,0);end.setHours(0,0,0,0);
+  while(cur<=end){var d=cur.getDay();if(d!==0&&d!==6)count++;cur.setDate(cur.getDate()+1);}
+  return count;
+}
+
+function calc(){
+  if(isInvoire())return;
+  var ds=document.getElementById('dstart').value,de=document.getElementById('dend').value;
+  var rb=document.getElementById('result-box'),wd=document.getElementById('warn-date');
+  if(!ds||!de){rb.style.display='none';wd.style.display='none';return;}
+  var d1=new Date(ds),d2=new Date(de);
+  if(d2<d1){rb.style.display='none';wd.style.display='block';return;}
+  wd.style.display='none';
+  var w=workdays(d1,d2);
+  var fmt=function(d){return d.toLocaleDateString('ro-RO',{day:'2-digit',month:'2-digit',year:'numeric'});};
+  document.getElementById('rnum').textContent=w;
+  document.getElementById('rlabel').textContent=w===1?'zi lucrătoare':'zile lucrătoare';
+  document.getElementById('rdetail').textContent=fmt(d1)+' — '+fmt(d2)+' (sâmbete și duminici excluse)';
+  rb.style.display='flex';
+}
+
+function fmtDate(str){
+  if(!str)return '—';
+  var luni=['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'];
+  var p=str.split('-');
+  return parseInt(p[2])+' '+luni[parseInt(p[1])-1]+' '+p[0];
+}
+
+function generateDoc(data){
+  var today=fmtDate(new Date().toISOString().split('T')[0]);
+  var isInv=data.tip==='Învoire';
+  var perioadaText=isInv
+    ?'în data de <strong>'+fmtDate(data.dataInceput)+'</strong>, pentru <strong>'+data.ore+(data.ore==='1'?' oră':' ore')+'</strong>'
+    :'începând cu data de <strong>'+fmtDate(data.dataInceput)+'</strong> până la data de <strong>'+fmtDate(data.dataSfarsit)+'</strong>, reprezentând <strong>'+data.zile+' zile lucrătoare</strong>';
+  document.getElementById('doc').innerHTML=
+    '<div class="nr-inreg">Nr. înreg.: _______ / '+today+'</div>'+
+    '<div class="doc-title">CERERE DE '+(isInv?'ÎNVOIRE':'CONCEDIU')+'</div>'+
+    '<div class="doc-subtitle">SC TOP STRONG SRL</div>'+
+    '<div class="doc-body">'+
+    '<p>Subsemnatul/a <strong>'+data.nume+'</strong>'+(data.functie?', având funcția de <strong>'+data.functie+'</strong>':'')+', angajat/ă al SC TOP STRONG SRL, vă rog să-mi aprobați <strong>'+data.tip.toLowerCase()+'</strong> '+perioadaText+'.</p>'+
+    (isInv?'':'<p>Menționez că la întoarcerea din concediu îmi voi relua activitatea în mod corespunzător.</p>')+
+    '<p>Vă mulțumesc pentru aprobare.</p></div>'+
+    '<div class="doc-tip"><table>'+
+    '<tr><td>Tip:</td><td>'+data.tip+'</td></tr>'+
+    '<tr><td>Data început:</td><td>'+fmtDate(data.dataInceput)+'</td></tr>'+
+    (isInv?'<tr><td>Ore solicitate:</td><td>'+data.ore+(data.ore==='1'?' oră':' ore')+'</td></tr>':'<tr><td>Data sfârșit:</td><td>'+fmtDate(data.dataSfarsit)+'</td></tr><tr><td>Zile lucrătoare:</td><td>'+data.zile+'</td></tr>')+
+    '</table></div>'+
+    '<div class="doc-signatures">'+
+    '<div class="sig-box"><div class="sig-label">Solicitant</div>'+data.nume+'<br><br>Semnătura: ___________</div>'+
+    '<div class="sig-box"><div class="sig-label">Aprobat</div>Director General<br><br>Semnătura: ___________</div>'+
+    '</div>'+
+    '<div class="doc-footer">SC TOP STRONG SRL — Cerere generată la '+today+'</div>';
+}
+
+function printDoc(){
+  var docContent=document.getElementById('doc').innerHTML;
+  var win=window.open('','_blank');
+  win.document.write('<html><head><meta charset="UTF-8"><title>Cerere concediu</title><style>body{font-family:Georgia,serif;padding:20mm;font-size:12pt;color:#111;line-height:1.6}.doc-title{text-align:center;font-size:17pt;font-weight:bold;margin-bottom:4px;letter-spacing:1px}.doc-subtitle{text-align:center;font-size:11pt;color:#555;margin-bottom:28px}.doc-body p{margin-bottom:10px;text-align:justify}.doc-body strong{text-decoration:underline}.doc-tip{margin:16px 0;padding:10px 16px;border:1px solid #111}.doc-tip table{width:100%;border-collapse:collapse}.doc-tip td{padding:4px 8px;font-size:11pt}.doc-tip td:first-child{font-weight:bold;width:160px}.doc-signatures{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}.sig-box{border-top:1px solid #111;padding-top:8px;font-size:11pt;text-align:center}.sig-label{font-weight:bold;margin-bottom:30px}.doc-footer{margin-top:28px;font-size:9pt;color:#777;text-align:center;border-top:1px solid #ddd;padding-top:8px}.nr-inreg{margin-bottom:20px;font-size:11pt}</style></head><body>'+docContent+'</body></html>');
+  win.document.close();
+  setTimeout(function(){win.print();},400);
+}
+
+function resetForm(){
+  document.getElementById('form-section').style.display='block';
+  document.getElementById('print-section').style.display='none';
+  document.getElementById('btn-submit').disabled=false;
+  document.getElementById('btn-submit').textContent='Trimite cererea';
+  document.getElementById('err-box').style.display='none';
+  document.querySelectorAll('input[type=text],input[type=date],input[type=email]').forEach(function(i){i.value='';});
+  document.querySelectorAll('input[name=tip_opt]').forEach(function(cb){cb.checked=false;cb.disabled=false;});
+  document.getElementById('ore').value='';
+  document.getElementById('result-box').style.display='none';
+  document.getElementById('ore-card').style.display='none';
+  document.getElementById('date-concediu').style.display='block';
+  document.getElementById('date-invoire').style.display='none';
+}
+
+function submitForm(){
+  var nume=document.getElementById('nume').value.trim();
+  var functie=document.getElementById('functie').value.trim();
+  var email=document.getElementById('email').value.trim();
+  var semn=document.getElementById('semn').value.trim();
+  var inv=isInvoire();
+  var tipuri=Array.from(document.querySelectorAll('input[name=tip_opt]:checked')).map(function(c){return c.value;});
+  var ore=document.getElementById('ore').value;
+  var errBox=document.getElementById('err-box');
+  errBox.style.display='none';
+  var ds=inv?document.getElementById('dstart-inv').value:document.getElementById('dstart').value;
+  var de=inv?ds:document.getElementById('dend').value;
+  if(!nume||!semn||!ds||tipuri.length===0){errBox.textContent='Completați toate câmpurile obligatorii și selectați tipul.';errBox.style.display='block';return;}
+  if(inv&&!ore){errBox.textContent='Selectați numărul de ore pentru învoire.';errBox.style.display='block';return;}
+  if(!inv&&!de){errBox.textContent='Completați data de sfârșit.';errBox.style.display='block';return;}
+  var d1=new Date(ds),d2=new Date(de);
+  if(!inv&&d2<d1){errBox.textContent='Data de sfârșit trebuie să fie după data de început.';errBox.style.display='block';return;}
+  var wdays=inv?0:workdays(d1,d2);
+  var btn=document.getElementById('btn-submit');
+  btn.disabled=true;
+  btn.innerHTML='<span class="spinner"></span>Se trimite...';
+  var params=new URLSearchParams();
+  params.append('nume',nume);
+  params.append('functie',functie);
+  params.append('email',email);
+  params.append('tip',tipuri.join(', '));
+  params.append('dataInceput',ds);
+  params.append('dataSfarsit',de);
+  params.append('zileLucratoare',wdays);
+  params.append('ore',ore);
+  params.append('semnatura',semn);
+  var img=new Image();
+  img.src=SCRIPT_URL+'?'+params.toString();
+  setTimeout(function(){
+    generateDoc({nume:nume,functie:functie,tip:tipuri.join(', '),dataInceput:ds,dataSfarsit:de,zile:wdays,ore:ore});
+    document.getElementById('form-section').style.display='none';
+    document.getElementById('print-section').style.display='block';
+  },3000);
+}
+
+document.getElementById('dstart').addEventListener('change',calc);
+document.getElementById('dend').addEventListener('change',calc);
+document.getElementById('ore').addEventListener('change',function(){
+  var val=this.value,info=document.getElementById('ore-info');
+  if(val){info.textContent='Învoire: '+val+(val==='1'?' oră':' ore')+' în ziua selectată.';info.style.display='block';}
+  else info.style.display='none';
+});
+document.querySelectorAll('input[name=tip_opt]').forEach(function(cb){cb.addEventListener('change',updateUI);});
+</script>
+</body>
+</html>
